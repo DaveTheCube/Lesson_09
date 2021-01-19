@@ -1,0 +1,13 @@
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.exe
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.deps.json
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.runtimeconfig.json
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.runtimeconfig.dev.json
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.dll
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\bin\Debug\netcoreapp3.1\Lesson_09.pdb
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.csprojAssemblyReference.cache
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.AssemblyInfoInputs.cache
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.AssemblyInfo.cs
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.csproj.CoreCompileInputs.cache
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.dll
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.pdb
+C:\Users\Danne\Documents\VisualStudioCode\ITA_Code\Lesson_09\obj\Debug\netcoreapp3.1\Lesson_09.genruntimeconfig.cache
