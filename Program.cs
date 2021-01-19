@@ -1,8 +1,11 @@
 ﻿using System;
 
-
-namespace Lesson_09S
+namespace Lesson_09
 {
+    public enum Alternatives
+    {
+        Rock, paper, scissors
+    }
     class Program
     {
         public static int gameRound;
@@ -19,14 +22,7 @@ namespace Lesson_09S
             {
                 Game();
             }
-            if (playerVictory == true)
-            {
-                Console.WriteLine("\t### Congratulations You Won! ###"); 
-            }
-            else
-            {
-                Console.WriteLine("\t### You lost, try again next time ###");
-            }
+            ResultCheck();
             Console.WriteLine("\nPress any key to continue");
             Console.ReadKey();
         }
@@ -40,7 +36,8 @@ namespace Lesson_09S
                     Console.WriteLine("Great, what is you name? ");
                     Console.Write("> ");
                     playerName = Console.ReadLine();
-                    Console.WriteLine("Okay {0}, lets play! \nFirst to 3 wins", playerName);
+                    Console.Clear();
+                    Console.WriteLine("\nOkay {0}, lets play! \n\nFirst to 3 wins", playerName);
                     Console.WriteLine("\n(Press any key to continue)");
                     Console.ReadKey();
                     Console.Clear();
@@ -53,20 +50,25 @@ namespace Lesson_09S
                 }
                 default:
                 {
-                    Console.WriteLine("Incorrect choise.");
+                    Console.WriteLine("### ERROR: Incorrect choise ###");
+                    System.Threading.Thread.Sleep(500);
+                    Console.Clear();
+                    Menu();
                     break;
                 }
             }
         }
         static void Game()
         {
-            Random cpuChoise = new Random();
             int input = 0;
             Console.WriteLine("### Round {0} ### \n", gameRound);
-            Console.WriteLine("Current score is: \n{0}:{1}    cpu:{2} \n\n", playerName, playerPoints, cpuPoints);
+            Console.WriteLine("Current score is: \n{0}:{1}    CPU:{2} \n\n", playerName, playerPoints, cpuPoints);
             Console.WriteLine("Rock (1), Paper (2) or Scissors (3)?");
+            
+            #region ERR input
             try
             {
+                Console.Write("> ");
                 input = Convert.ToInt32(Console.ReadLine());
             }
             catch (FormatException e)
@@ -88,91 +90,55 @@ namespace Lesson_09S
             if (input < 0 || input > 3)
             {
                 Console.WriteLine("Incorrect choise. try again");
+                Console.ReadKey();
+                Console.Clear();
                 Game();
+            }
+            #endregion
+            
+            Random cpuChoise = new Random();
+            int cpu = cpuChoise.Next(1,4);
+            GameBack(input, cpu);
+            if (playerPoints == 3)
+            {
+                playerVictory = true;
+            }
+            if (cpuPoints == 3)
+            {
+                cpuVictory = true;
+            }
+            System.Threading.Thread.Sleep(800);
+            Console.Clear();
+        }
+        static void GameBack(int player, int cpu)
+        {
+            if (player == cpu)
+            {
+                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{0}\"..... Its a tie. ", (Alternatives)player -1);
+            }
+            else if (player < cpu || (player == 3 && cpu == 1))
+            {
+                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{1}\"..... You Win. ", (Alternatives)player -1 , (Alternatives)cpu -1);
+                playerPoints++;
+                gameRound++;
             }
             else
             {
-                int cpu = cpuChoise.Next(1,4);
-                string playerChoise = Convert.ToString(input);
-                switch (playerChoise)
-                {
-                    case "1":
-                    {
-                        if (cpu == 2)
-                        {
-                            Console.WriteLine("You chose: \"Rock\", Your opponent chose: \"Paper\"..... You lose. ");
-                            cpuPoints++;
-                            gameRound++;
-                        }
-                        else if (cpu == 1)
-                        {
-                            Console.WriteLine("You chose: \"Rock\", Your opponent chose: \"Rock\"..... Its a tie. ");
-                        }
-                        else
-                        {
-                            Console.WriteLine("You chose: \"Rock\", Your opponent chose: \"Scissors\"..... You Win. ");
-                            playerPoints++;
-                            gameRound++;
-                        }
-                        break;
-                    }
-                    case "2":
-                    {
-                        if (cpu == 3)
-                        {
-                            Console.WriteLine("You chose: \"Paper\", Your opponent chose: \"Scissors\"..... You lose. ");
-                            cpuPoints++;
-                            gameRound++;
-                        }
-                        else if (cpu == 2)
-                        {
-                            Console.WriteLine("You chose: \"Paper\", Your opponent chose: \"Paper\"..... Its a tie. ");
-                        }
-                        else
-                        {
-                            Console.WriteLine("You chose: \"Paper\", Your opponent chose: \"Rock\"..... You Win. ");
-                            playerPoints++;
-                            gameRound++;
-                        }
-                        break;
-                    }
-                    case "3":
-                    {
-                        if (cpu == 1)
-                        {
-                            Console.WriteLine("You chose: \"Scissors\", Your opponent chose: \"Rock\"..... You lose. ");
-                            cpuPoints++;
-                            gameRound++;
-                        }
-                        else if (cpu == 3)
-                        {
-                            Console.WriteLine("You chose: \"Scissors\", Your opponent chose: \"Scissors\"..... Its a tie. ");
-                        }
-                        else
-                        {
-                            Console.WriteLine("You chose: \"Scissors\", Your opponent chose: \"Paper\"..... You Win. ");
-                            playerPoints++;
-                            gameRound++;
-                        }
-                        break;
-                    }
-                }
-                if (playerPoints == 3)
-                {
-                    playerVictory = true;
-                }
-                if (cpuPoints == 3)
-                {
-                    cpuVictory = true;
-                }
-                System.Threading.Thread.Sleep(500);
-
-                Console.Clear();
+                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{1}\"..... You lose. ", (Alternatives)player -1 , (Alternatives)cpu -1);
+                cpuPoints++;
+                gameRound++;
             }
         }
-        static void Handeling()
+        static void ResultCheck()
         {
-
+            if (playerVictory == true)
+            {
+                Console.WriteLine("\n\n\t### Congratulations You Won! ###\n"); 
+            }
+            else
+            {
+                Console.WriteLine("\n\n\t### You lost, try again next time ###\n");
+            }
         }
     }
 }
