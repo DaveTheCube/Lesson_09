@@ -96,6 +96,7 @@ namespace Lesson_09
             }
             #endregion
             
+            #region Game
             Random cpuChoise = new Random();
             int cpu = cpuChoise.Next(1,4);
             GameBack(input, cpu);
@@ -109,22 +110,24 @@ namespace Lesson_09
             }
             System.Threading.Thread.Sleep(800);
             Console.Clear();
+            #endregion
         }
         static void GameBack(int player, int cpu)
         {
+            string message = "You chose: \"" + ((Alternatives)player-1) + "\", Your opponent chose: \"" + ((Alternatives)cpu-1) + "\"..... ";
             if (player == cpu)
             {
-                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{0}\"..... Its a tie. ", (Alternatives)player -1);
+                Console.WriteLine(message + "Its a tie.");
             }
             else if (player < cpu || (player == 3 && cpu == 1))
             {
-                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{1}\"..... You Win. ", (Alternatives)player -1 , (Alternatives)cpu -1);
+                Console.WriteLine(message + "You Win.");
                 playerPoints++;
                 gameRound++;
             }
             else
             {
-                Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{1}\"..... You lose. ", (Alternatives)player -1 , (Alternatives)cpu -1);
+                Console.WriteLine(message + "You lose.");
                 cpuPoints++;
                 gameRound++;
             }
