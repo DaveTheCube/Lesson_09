@@ -29,6 +29,7 @@ namespace Lesson_09
         static void Menu()
         {
             Console.WriteLine("Hello! Would you like to play some \"rock, paper, scissors\"? (y/n)");
+            Console.Write("> ");
             switch (Console.ReadLine())
             {
                 case "y":
@@ -142,10 +143,67 @@ namespace Lesson_09
             if (playerVictory == true)
             {
                 Console.WriteLine("\n\n\t### Congratulations You Won! ###\n"); 
+                Console.WriteLine("\n\n\tWould you like to play again? (y/n)\n");
+                Console.Write("> ");
+                switch (Console.ReadLine())
+                {
+                    case "y":
+                    {
+                        gameRound = 0;
+                        cpuPoints = 0;
+                        playerPoints = 0;
+                        playerVictory = false;
+                        Game();
+                        break;
+                    }
+                    case "n":
+                    {
+                        Console.WriteLine("Oh .... okay, see you later I guess.");
+                        System.Threading.Thread.Sleep(800);
+                        System.Environment.Exit(0);
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("### ERROR: Incorrect choise ###");
+                        System.Threading.Thread.Sleep(500);
+                        Console.Clear();
+                        ResultCheck();
+                        break;
+                    }
+                }
             }
             else
             {
-                Console.WriteLine("\n\n\t### You lost, try again next time ###\n");
+                Console.WriteLine("\n\n\t### You lost, Would you like to try again? (y/n) ###\n");
+                Console.Write("> ");
+                switch (Console.ReadLine())
+                {
+                    case "y":
+                    {
+                        gameRound = 0;
+                        cpuPoints = 0;
+                        playerPoints = 0;
+                        cpuVictory = false;
+                        Game();
+                        break;
+                    }
+                    case "n":
+                    {
+                        Console.WriteLine("Oh .... okay, see you later I guess.");
+                        System.Threading.Thread.Sleep(800);
+                        System.Environment.Exit(0);
+                        break;
+                    }
+                    default:
+                    {
+                        Console.WriteLine("### ERROR: Incorrect choise ###");
+                        System.Threading.Thread.Sleep(500);
+                        Console.Clear();
+                        ResultCheck();
+                        break;
+                    } 
+                }
             }
         }
     }
