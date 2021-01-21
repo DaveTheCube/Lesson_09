@@ -46,6 +46,8 @@ namespace Lesson_09
                 case "n":
                 {
                     Console.WriteLine("Oh .... okay, see you later I guess.");
+                    System.Threading.Thread.Sleep(800);
+                    System.Environment.Exit(0);
                     break;
                 }
                 default:
@@ -60,6 +62,8 @@ namespace Lesson_09
         }
         static void Game()
         {
+            #region Game
+            Game:
             int input = 0;
             Console.WriteLine("### Round {0} ### \n", gameRound);
             Console.WriteLine("Current score is: \n{0}:{1}    CPU:{2} \n\n", playerName, playerPoints, cpuPoints);
@@ -75,24 +79,27 @@ namespace Lesson_09
             {
                 Console.WriteLine("ERROR: " + e.Message);
                 Console.WriteLine("Press any key to try again");
+                input = 0;
                 Console.ReadKey();
                 Console.Clear();
-                Game();
+                goto Game;
             }
             catch (OverflowException e)
             {
                 Console.WriteLine("ERROR: " + e.Message);
                 Console.WriteLine("Press any key to try again");
+                input = 0;
                 Console.ReadKey();
                 Console.Clear();
-                Game();
+                goto Game;
             }
             if (input < 0 || input > 3)
             {
                 Console.WriteLine("Incorrect choise. try again");
+                input = 0;
                 Console.ReadKey();
                 Console.Clear();
-                Game();
+                goto Game;
             }
             #endregion
             
@@ -107,8 +114,9 @@ namespace Lesson_09
             {
                 cpuVictory = true;
             }
-            System.Threading.Thread.Sleep(800);
+            Console.ReadKey();
             Console.Clear();
+            #endregion
         }
         static void GameBack(int player, int cpu)
         {
@@ -116,7 +124,7 @@ namespace Lesson_09
             {
                 Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{0}\"..... Its a tie. ", (Alternatives)player -1);
             }
-            else if (player < cpu || (player == 3 && cpu == 1))
+            else if (player == 1+cpu || (player == 1 && cpu == 3))
             {
                 Console.WriteLine("You chose: \"{0}\", Your opponent chose: \"{1}\"..... You Win. ", (Alternatives)player -1 , (Alternatives)cpu -1);
                 playerPoints++;
